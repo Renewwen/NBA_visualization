@@ -9,7 +9,10 @@ window.d3_hexbin = {hexbin : hexbin}; // workaround library problem
 
 class ShotChart extends Component {
     static propTypes = {
-        playerId: PropTypes.number.isRequired,
+        playerId: PropTypes.number,
+        minCount: PropTypes.number,
+        chartType: PropTypes.string,
+        displayTooltip: PropTypes.bool,
     }
 
     componentDidUpdate() {
@@ -25,8 +28,12 @@ class ShotChart extends Component {
             }));
 
             const courtSelection = d3.select("#shot-chart");
+            courtSelection.html('');
             const chart_court = court().width(500);
-            const chart_shots = shots().shotRenderThreshold(2).displayToolTips(true).displayType("hexbin");
+            const chart_shots = shots()
+                .shotRenderThreshold(this.props.minCount)
+                .displayToolTips(this.props.displayTooltip)
+                .displayType(this.props.chartType);
             courtSelection.call(chart_court);
             courtSelection.datum(final_shots).call(chart_shots);
         });

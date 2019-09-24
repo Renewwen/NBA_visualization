@@ -3,6 +3,8 @@ import Profile from './Profile';
 import nba from 'nba';
 import ShotChart from './ShotChart';
 
+import DataViewContainer from './DataViewContainer';
+
 class Main extends React.Component {
     state = {
         playerId: nba.findPlayer('Stephen Curry').playerId,
@@ -24,7 +26,7 @@ class Main extends React.Component {
         return (
             <div className="main">
                 <Profile playerInfo={this.state.playerInfo} />
-                <ShotChart playerId={this.state.playerId} />
+                <DataViewContainer playerId={this.state.playerInfo.playerId}/>
             </div>
         );
     }
