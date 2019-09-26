@@ -6,7 +6,7 @@
 @import "styles/Main.css";
 @import "styles/ShotChart.css";
 @import "styles/DataViewContainer.css";
-@import "styles/CountSlider.css";
+@import "styles/SearchBar.css";
 
 body {
   margin: 0;
